@@ -32,9 +32,10 @@ namespace Eduhome.Controllers
                 NoticeBoards=_context.NoticeBoards.Where(nb=>nb.IsDeleted==false).ToList(),
                 SingleNoticeRights=_context.SingleNoticeRights.Where(sn=>sn.IsDeleted==false).ToList(),
                 Chooses=_context.Chooses.FirstOrDefault(),
-                CourseDetails=_context.CourseDetails.Include(cd=>cd.Categories).FirstOrDefault(),
-                CourseFeatures=_context.CourseFeatures.FirstOrDefault(),
-                Courses=_context.Courses.Where(c=>c.IsDeleted==false).ToList()
+                Courses=_context.Courses.Where(c=>c.IsDeleted==false).ToList(),
+                Events=_context.Events.Where(e=>e.IsDeleted==false).ToList(),
+                Testimonials=_context.Testimonials.FirstOrDefault(),
+                Blogs=_context.Blogs.Where(b=>b.IsDeleted==false).ToList()
             };
 
             return View(homeVM);

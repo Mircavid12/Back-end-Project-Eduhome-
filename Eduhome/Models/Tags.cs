@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Eduhome.Models
 {
-    public class Categories
+    public class Tags
     {
         public int id { get; set; }
-        public string Name { get; set; }
-        public int Count { get; set; }
+        public string Title { get; set; }
         public bool IsDeleted { get; set; }
-        
     }
 }

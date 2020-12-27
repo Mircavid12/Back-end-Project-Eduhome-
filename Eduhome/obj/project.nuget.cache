@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qxzf4Q8IFhMYAZI0ebT98Zil7/R9Hyd2HIidYoklD8vxoTqxaubyzpbTMsB+q4MXJ7U09JAPM+/JvqJeTQsKBQ==",
+  "dgSpecHash": "HI0yTnKCz1zrg4jg8J6VWfZHs8UajkDOJFE8tGaxBfa1e73zBbcLOwF/iJxxtZ4XYIitBgzaUZuLgI9mIMi5Dw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\Eduhome.csproj",
+  "projectFilePath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\Eduhome.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Power Electronics\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Power Electronics\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

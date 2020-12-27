@@ -11,6 +11,14 @@
     <Compile Remove="Migrations\20201226200734_CreateCoursesTable.Designer.cs" />
     <Compile Remove="Migrations\20201226205128_CreateCtagoriesTable.cs" />
     <Compile Remove="Migrations\20201226205128_CreateCtagoriesTable.Designer.cs" />
+    <Compile Remove="Migrations\20201226205303_CreateCategoriesTable.cs" />
+    <Compile Remove="Migrations\20201226205303_CreateCategoriesTable.Designer.cs" />
+    <Compile Remove="Migrations\20201227180601_CreateCategoriesPostsTagsTables.cs" />
+    <Compile Remove="Migrations\20201227180601_CreateCategoriesPostsTagsTables.Designer.cs" />
+    <Compile Remove="Migrations\20201227191146_CreateEventsTableAndDetails.cs" />
+    <Compile Remove="Migrations\20201227191146_CreateEventsTableAndDetails.Designer.cs" />
+    <Compile Remove="Migrations\20201227194401_CreateEventsAndDetails.cs" />
+    <Compile Remove="Migrations\20201227194401_CreateEventsAndDetails.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

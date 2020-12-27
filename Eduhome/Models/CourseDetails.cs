@@ -16,6 +16,5 @@ namespace Eduhome.Models
         public string Description2 { get; set; }
         public string CourseDetailTitle3 { get; set; }
         public string Description3 { get; set; }
-        public ICollection<Categories> Categories { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace Eduhome.ViewModels
         public List<SingleNoticeRight> SingleNoticeRights { get; set; }
         public Chooses Chooses { get; set; }
         public List<Courses> Courses { get; set; }
-        public CourseDetails CourseDetails { get; set; }
-        public CourseFeatures CourseFeatures { get; set; }
-        public List<Categories> Categories { get; set; }
+        public List<Events> Events { get; set; }
+        public Testimonials Testimonials { get; set; }
+        public List<Blogs> Blogs { get; set; }
     }
 }

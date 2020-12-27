@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\Eduhome.csproj": {}
+    "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\Eduhome.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\Eduhome.csproj": {
+    "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\Eduhome.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\Eduhome.csproj",
+        "projectUniqueName": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\Eduhome.csproj",
         "projectName": "Eduhome",
-        "projectPath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\Eduhome.csproj",
+        "projectPath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\Eduhome.csproj",
         "packagesPath": "C:\\Users\\Power Electronics\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Eduhome\\obj\\",
+        "outputPath": "C:\\Users\\Power Electronics\\source\\repos\\Eduhome\\Back-end-Project-Eduhome-\\Eduhome\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Power Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
