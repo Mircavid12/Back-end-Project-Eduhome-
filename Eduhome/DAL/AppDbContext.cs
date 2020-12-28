@@ -29,6 +29,13 @@ namespace Eduhome.DAL
         public DbSet<Testimonials> Testimonials { get; set; }
         public DbSet<Blogs> Blogs { get; set; }
         public DbSet<BlogDetails> BlogDetails { get; set; }
+        public DbSet<AboutIntro> AboutIntros { get; set; }
+        public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<TeacherDetails> TeacherDetails { get; set; }
+        public DbSet<Skills> Skills { get; set; }
+        public DbSet<ContactInfos> ContactInfos { get; set; }
+        public DbSet<TeacherBios> teacherBios { get; set; }
+        public DbSet<AboutVideo> AboutVideos { get; set; }
 
     }
 }

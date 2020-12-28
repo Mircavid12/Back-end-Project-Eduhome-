@@ -282,7 +282,6 @@ C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhom
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.TagHelpers.input.cache
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.TagHelpers.output.cache
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.RazorCoreGenerate.cache
-C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
@@ -300,3 +299,5 @@ C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhom
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.dll
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.pdb
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Eduhome.genruntimeconfig.cache
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
