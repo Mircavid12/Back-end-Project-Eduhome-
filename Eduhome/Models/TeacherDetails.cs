@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +23,9 @@ namespace Eduhome.Models
         public string Faculty { get; set; }
         public DateTime? DeletedTime { get; set; }
         public bool IsDeleted { get; set; }
+        [ForeignKey("Teachers")]
+        public int TeacherId { get; set; }
+        public virtual Teachers Teachers { get; set; }
         public ICollection<Skills> Skills { get; set; }
         public ICollection<ContactInfos> ContactInfos { get; set; }
     }

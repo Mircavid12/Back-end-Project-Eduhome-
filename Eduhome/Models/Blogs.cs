@@ -17,6 +17,5 @@ namespace Eduhome.Models
         public DateTime? DeletedTime { get; set; }
         public bool IsDeleted { get; set; }
         public BlogDetails BlogDetails { get; set; }
-        public int BlogDetailsId { get; set; }
     }
 }

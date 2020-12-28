@@ -18,7 +18,6 @@ namespace Eduhome.DAL
         public DbSet<SingleNoticeRight> SingleNoticeRights { get; set; }
         public DbSet<Chooses> Chooses { get; set; }
         public DbSet<Courses> Courses { get; set; }
-        public DbSet<CourseDetails> CourseDetails { get; set; }
         public DbSet<CourseFeatures> CourseFeatures { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<LatestPosts> LatestPosts { get; set; }
@@ -36,6 +35,7 @@ namespace Eduhome.DAL
         public DbSet<ContactInfos> ContactInfos { get; set; }
         public DbSet<TeacherBios> teacherBios { get; set; }
         public DbSet<AboutVideo> AboutVideos { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
 
     }
 }

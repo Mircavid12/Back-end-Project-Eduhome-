@@ -12,5 +12,7 @@ namespace Eduhome.Models
         public string Pinterest { get; set; }
         public string Vimeo { get; set; }
         public string Instagram { get; set; }
+        public virtual Teachers Teachers { get; set; }
+        public  int TeachersId { get; set; }
     }
 }

@@ -102,6 +102,9 @@ namespace Eduhome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BlogsId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
 
@@ -132,6 +135,9 @@ namespace Eduhome.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("BlogsId")
+                        .IsUnique();
+
                     b.ToTable("BlogDetails");
                 });
 
@@ -141,9 +147,6 @@ namespace Eduhome.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BlogDetailsId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
@@ -164,8 +167,6 @@ namespace Eduhome.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("id");
-
-                    b.HasIndex("BlogDetailsId");
 
                     b.ToTable("Blogs");
                 });
@@ -238,40 +239,33 @@ namespace Eduhome.Migrations
                     b.ToTable("ContactInfos");
                 });
 
-            modelBuilder.Entity("Eduhome.Models.CourseDetails", b =>
+            modelBuilder.Entity("Eduhome.Models.Contacts", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CourseDetailTitle1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("CourseDetailTitle2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("AddressLogo")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
-                    b.Property<string>("CourseDetailTitle3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
-                    b.Property<string>("CoursePurpose")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PurposeDescription")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
-                    b.ToTable("CourseDetails");
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("Eduhome.Models.CourseFeatures", b =>
@@ -281,7 +275,16 @@ namespace Eduhome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Apply")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Assestments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Certification")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClassDuration")
@@ -289,6 +292,9 @@ namespace Eduhome.Migrations
 
                     b.Property<double>("CourseFee")
                         .HasColumnType("float");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
@@ -307,6 +313,9 @@ namespace Eduhome.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseId")
+                        .IsUnique();
+
                     b.ToTable("CourseFeatures");
                 });
 
@@ -316,12 +325,6 @@ namespace Eduhome.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CourseDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseFeaturesId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
@@ -342,10 +345,6 @@ namespace Eduhome.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("CourseDetailsId");
-
-                    b.HasIndex("CourseFeaturesId");
-
                     b.ToTable("Courses");
                 });
 
@@ -359,7 +358,7 @@ namespace Eduhome.Migrations
                     b.Property<DateTime?>("DeletedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Description1")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description2")
@@ -368,25 +367,16 @@ namespace Eduhome.Migrations
                     b.Property<string>("Description3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EventsId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Venue")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("id");
+
+                    b.HasIndex("EventsId")
+                        .IsUnique();
 
                     b.ToTable("EventDetails");
                 });
@@ -406,9 +396,6 @@ namespace Eduhome.Migrations
 
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("EventDetailsId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -431,8 +418,6 @@ namespace Eduhome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
-
-                    b.HasIndex("EventDetailsId");
 
                     b.ToTable("Events");
                 });
@@ -565,6 +550,9 @@ namespace Eduhome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("EventDetailsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -578,6 +566,8 @@ namespace Eduhome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("EventDetailsId");
 
                     b.ToTable("Speakers");
                 });
@@ -616,7 +606,7 @@ namespace Eduhome.Migrations
                     b.Property<string>("Pinterest")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Teachersid")
+                    b.Property<int>("TeachersId")
                         .HasColumnType("int");
 
                     b.Property<string>("Vimeo")
@@ -624,7 +614,7 @@ namespace Eduhome.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Teachersid");
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("teacherBios");
                 });
@@ -670,7 +660,13 @@ namespace Eduhome.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
 
                     b.ToTable("TeacherDetails");
                 });
@@ -700,12 +696,7 @@ namespace Eduhome.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeacherDetailsId")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
-
-                    b.HasIndex("TeacherDetailsId");
 
                     b.ToTable("Teachers");
                 });
@@ -734,11 +725,11 @@ namespace Eduhome.Migrations
                     b.ToTable("Testimonials");
                 });
 
-            modelBuilder.Entity("Eduhome.Models.Blogs", b =>
+            modelBuilder.Entity("Eduhome.Models.BlogDetails", b =>
                 {
-                    b.HasOne("Eduhome.Models.BlogDetails", "BlogDetails")
-                        .WithMany()
-                        .HasForeignKey("BlogDetailsId")
+                    b.HasOne("Eduhome.Models.Blogs", "Blogs")
+                        .WithOne("BlogDetails")
+                        .HasForeignKey("Eduhome.Models.BlogDetails", "BlogsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -752,26 +743,20 @@ namespace Eduhome.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Eduhome.Models.Courses", b =>
+            modelBuilder.Entity("Eduhome.Models.CourseFeatures", b =>
                 {
-                    b.HasOne("Eduhome.Models.CourseDetails", "CourseDetails")
-                        .WithMany()
-                        .HasForeignKey("CourseDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Eduhome.Models.CourseFeatures", "CourseFeatures")
-                        .WithMany()
-                        .HasForeignKey("CourseFeaturesId")
+                    b.HasOne("Eduhome.Models.Courses", "Courses")
+                        .WithOne("CourseFeatures")
+                        .HasForeignKey("Eduhome.Models.CourseFeatures", "CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Eduhome.Models.Events", b =>
+            modelBuilder.Entity("Eduhome.Models.EventDetails", b =>
                 {
-                    b.HasOne("Eduhome.Models.EventDetails", "EventDetails")
-                        .WithMany()
-                        .HasForeignKey("EventDetailsId")
+                    b.HasOne("Eduhome.Models.Events", "Events")
+                        .WithOne("EventDetails")
+                        .HasForeignKey("Eduhome.Models.EventDetails", "EventsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -785,18 +770,29 @@ namespace Eduhome.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Eduhome.Models.TeacherBios", b =>
+            modelBuilder.Entity("Eduhome.Models.Speakers", b =>
                 {
-                    b.HasOne("Eduhome.Models.Teachers", null)
-                        .WithMany("TeacherBios")
-                        .HasForeignKey("Teachersid");
+                    b.HasOne("Eduhome.Models.EventDetails", "EventDetails")
+                        .WithMany("Speakers")
+                        .HasForeignKey("EventDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("Eduhome.Models.Teachers", b =>
+            modelBuilder.Entity("Eduhome.Models.TeacherBios", b =>
                 {
-                    b.HasOne("Eduhome.Models.TeacherDetails", "TeacherDetails")
-                        .WithMany()
-                        .HasForeignKey("TeacherDetailsId")
+                    b.HasOne("Eduhome.Models.Teachers", "Teachers")
+                        .WithMany("TeacherBios")
+                        .HasForeignKey("TeachersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Eduhome.Models.TeacherDetails", b =>
+                {
+                    b.HasOne("Eduhome.Models.Teachers", "Teachers")
+                        .WithOne("TeacherDetails")
+                        .HasForeignKey("Eduhome.Models.TeacherDetails", "TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

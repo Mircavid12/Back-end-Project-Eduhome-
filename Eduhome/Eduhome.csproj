@@ -5,20 +5,66 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201226173725_CreateBiosTable.cs" />
+    <Compile Remove="Migrations\20201226173725_CreateBiosTable.Designer.cs" />
+    <Compile Remove="Migrations\20201226180205_AddTitle2ColumnSlider.cs" />
+    <Compile Remove="Migrations\20201226180205_AddTitle2ColumnSlider.Designer.cs" />
+    <Compile Remove="Migrations\20201226181335_CreateNoticeBoardTable.cs" />
+    <Compile Remove="Migrations\20201226181335_CreateNoticeBoardTable.Designer.cs" />
+    <Compile Remove="Migrations\20201226181840_NoticeBoard.cs" />
+    <Compile Remove="Migrations\20201226181840_NoticeBoard.Designer.cs" />
+    <Compile Remove="Migrations\20201226182021_RemovedTitleFromNoticeBoard.cs" />
+    <Compile Remove="Migrations\20201226182021_RemovedTitleFromNoticeBoard.Designer.cs" />
+    <Compile Remove="Migrations\20201226183841_IsDeletedColumnAdd.cs" />
+    <Compile Remove="Migrations\20201226183841_IsDeletedColumnAdd.Designer.cs" />
+    <Compile Remove="Migrations\20201226185119_CreateChoosesTable.cs" />
+    <Compile Remove="Migrations\20201226185119_CreateChoosesTable.Designer.cs" />
     <Compile Remove="Migrations\20201226194442_CreateCommonCourseTable.cs" />
     <Compile Remove="Migrations\20201226194442_CreateCommonCourseTable.Designer.cs" />
     <Compile Remove="Migrations\20201226200734_CreateCoursesTable.cs" />
     <Compile Remove="Migrations\20201226200734_CreateCoursesTable.Designer.cs" />
+    <Compile Remove="Migrations\20201226201626_CreateCoursesTableDB.cs" />
+    <Compile Remove="Migrations\20201226201626_CreateCoursesTableDB.Designer.cs" />
     <Compile Remove="Migrations\20201226205128_CreateCtagoriesTable.cs" />
     <Compile Remove="Migrations\20201226205128_CreateCtagoriesTable.Designer.cs" />
     <Compile Remove="Migrations\20201226205303_CreateCategoriesTable.cs" />
     <Compile Remove="Migrations\20201226205303_CreateCategoriesTable.Designer.cs" />
     <Compile Remove="Migrations\20201227180601_CreateCategoriesPostsTagsTables.cs" />
     <Compile Remove="Migrations\20201227180601_CreateCategoriesPostsTagsTables.Designer.cs" />
+    <Compile Remove="Migrations\20201227180942_CreateCategoriesTagsPosts.cs" />
+    <Compile Remove="Migrations\20201227180942_CreateCategoriesTagsPosts.Designer.cs" />
     <Compile Remove="Migrations\20201227191146_CreateEventsTableAndDetails.cs" />
     <Compile Remove="Migrations\20201227191146_CreateEventsTableAndDetails.Designer.cs" />
     <Compile Remove="Migrations\20201227194401_CreateEventsAndDetails.cs" />
     <Compile Remove="Migrations\20201227194401_CreateEventsAndDetails.Designer.cs" />
+    <Compile Remove="Migrations\20201227200343_CreateEventsTable.cs" />
+    <Compile Remove="Migrations\20201227200343_CreateEventsTable.Designer.cs" />
+    <Compile Remove="Migrations\20201227203913_TestimonialsDBMigrate.cs" />
+    <Compile Remove="Migrations\20201227203913_TestimonialsDBMigrate.Designer.cs" />
+    <Compile Remove="Migrations\20201227205454_CreateBlogsAndBlogDetailsMigration.cs" />
+    <Compile Remove="Migrations\20201227205454_CreateBlogsAndBlogDetailsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201228073715_AboutIntroTableMigration.cs" />
+    <Compile Remove="Migrations\20201228073715_AboutIntroTableMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201228093220_TeachersAndTeacherDetailsMigration.cs" />
+    <Compile Remove="Migrations\20201228093220_TeachersAndTeacherDetailsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201228104942_AboutVideoMigrationDB.cs" />
+    <Compile Remove="Migrations\20201228104942_AboutVideoMigrationDB.Designer.cs" />
+    <Compile Remove="Migrations\20201228143845_CreateImageCoumnOnCourseDetail.cs" />
+    <Compile Remove="Migrations\20201228143845_CreateImageCoumnOnCourseDetail.Designer.cs" />
+    <Compile Remove="Migrations\20201228165638_AddDayAndMonthColumnEventDetail.cs" />
+    <Compile Remove="Migrations\20201228165638_AddDayAndMonthColumnEventDetail.Designer.cs" />
+    <Compile Remove="Migrations\20201228175753_ContactMigration.cs" />
+    <Compile Remove="Migrations\20201228175753_ContactMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201228180326_ContactMigrationDB.cs" />
+    <Compile Remove="Migrations\20201228180326_ContactMigrationDB.Designer.cs" />
+    <Compile Remove="Migrations\20201228180802_ContactMigrationToDB.cs" />
+    <Compile Remove="Migrations\20201228180802_ContactMigrationToDB.Designer.cs" />
+    <Compile Remove="Migrations\20201228181212_ContactDb.cs" />
+    <Compile Remove="Migrations\20201228181212_ContactDb.Designer.cs" />
+    <Compile Remove="Migrations\20201228194243_CreateAllTables.cs" />
+    <Compile Remove="Migrations\20201228194243_CreateAllTables.Designer.cs" />
+    <Compile Remove="Migrations\20201228201420_CreateAllTablesOnDB.cs" />
+    <Compile Remove="Migrations\20201228201420_CreateAllTablesOnDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

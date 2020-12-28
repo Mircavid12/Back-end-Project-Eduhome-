@@ -15,10 +15,7 @@ namespace Eduhome.Models
         public string Description { get; set; }
         public DateTime? DeletedTime { get; set; }
         public bool IsDeleted { get; set; }
-        public CourseDetails CourseDetails { get; set; }
-        public int CourseDetailsId { get; set; }
         public CourseFeatures CourseFeatures { get; set; }
-        public int CourseFeaturesId { get; set; }
 
     }
 }
