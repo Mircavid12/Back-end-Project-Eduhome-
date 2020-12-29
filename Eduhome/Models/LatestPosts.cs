@@ -12,5 +12,6 @@ namespace Eduhome.Models
         public string Image { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
+        
     }
 }

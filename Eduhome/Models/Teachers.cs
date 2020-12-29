@@ -18,5 +18,7 @@ namespace Eduhome.Models
         public bool IsDeleted { get; set; }
         public ICollection<TeacherBios> TeacherBios { get; set; }
         public TeacherDetails TeacherDetails { get; set; }
+        public ICollection<TeacherSkill> TeacherSkills { get; set; }
+        public ICollection<ContactInfos> ContactInfos { get; set; }
     }
 }

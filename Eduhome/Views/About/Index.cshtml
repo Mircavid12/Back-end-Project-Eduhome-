@@ -64,16 +64,16 @@
                             <h2><a href="teacher-details.html">@teacher.Name</a></h2>
                             <h4>@teacher.Position</h4>
                             <ul>
-                                @foreach (TeacherBios tb in teacher.TeacherBios)
+                                @foreach (TeacherBios tb in teacher.TeacherBios.Take(1))
                                 {
                                     
-                                        <li><a href="@tb.Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
+                                        <li><a href="@tb"><i class="zmdi zmdi-facebook"></i></a></li>
                                     
-                                        <li><a href="@tb.Pinterest"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                        <li><a href="@tb"><i class="zmdi zmdi-pinterest"></i></a></li>
                                     
-                                        <li><a href="@tb.Vimeo"><i class="zmdi zmdi-vimeo"></i></a></li>
+                                        <li><a href="@tb"><i class="zmdi zmdi-vimeo"></i></a></li>
                                     
-                                        <li><a href="@tb.Instagram"><i class="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a href="@tb"><i class="zmdi zmdi-twitter"></i></a></li>
                                     
                                 }
                             </ul>

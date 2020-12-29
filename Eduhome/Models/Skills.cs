@@ -10,7 +10,6 @@ namespace Eduhome.Models
         public int id { get; set; }
         public string Name { get; set; }
         public double Percentage { get; set; }
-        public virtual TeacherDetails TeacherDetails { get; set; }
-        public int TeacherDetailsId { get; set; }
+        public ICollection<TeacherSkill> TeacherSkills { get; set; }
     }
 }

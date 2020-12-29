@@ -13,7 +13,6 @@ namespace Eduhome.Models
         public string Name { get; set; }
         public string Position { get; set; }
         public bool IsDeleted { get; set; }
-        public int EventDetailsId { get; set; }
-        public virtual EventDetails EventDetails { get; set; }
+        public ICollection<EventSpeaker> EventSpeakers { get; set; }
     }
 }

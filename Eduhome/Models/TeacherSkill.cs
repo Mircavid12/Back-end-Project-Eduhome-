@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace Eduhome.Models
 {
-    public class TeacherBios
+    public class TeacherSkill
     {
         public int id { get; set; }
-        public string Name { get; set; }
         public virtual Teachers Teachers { get; set; }
-        public  int TeachersId { get; set; }
+        public int  TeachersId { get; set; }
+        public virtual Skills Skills { get; set; }
+        public int SkillsId { get; set; }
     }
 }

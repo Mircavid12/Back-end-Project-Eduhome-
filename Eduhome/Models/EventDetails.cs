@@ -17,7 +17,6 @@ namespace Eduhome.Models
         [ForeignKey("Events")]
         public int EventsId { get; set; }
         public virtual Events Events { get; set; }
-        public ICollection<Speakers> Speakers { get; set; }
 
     }
 }

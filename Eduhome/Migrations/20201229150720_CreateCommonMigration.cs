@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Eduhome.Migrations
 {
-    public partial class CreateAllTablesDB : Migration
+    public partial class CreateCommonMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -219,6 +219,36 @@ namespace Eduhome.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Skills",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Percentage = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Skills", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Speakers",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Image = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Position = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Speakers", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tags",
                 columns: table => new
                 {
@@ -347,15 +377,40 @@ namespace Eduhome.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventSpeaker",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventId = table.Column<int>(nullable: false),
+                    Eventsid = table.Column<int>(nullable: true),
+                    SpeakerId = table.Column<int>(nullable: false),
+                    Speakersid = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventSpeaker", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_EventSpeaker_Events_Eventsid",
+                        column: x => x.Eventsid,
+                        principalTable: "Events",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EventSpeaker_Speakers_Speakersid",
+                        column: x => x.Speakersid,
+                        principalTable: "Speakers",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "teacherBios",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Facebook = table.Column<string>(nullable: true),
-                    Pinterest = table.Column<string>(nullable: true),
-                    Vimeo = table.Column<string>(nullable: true),
-                    Instagram = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     TeachersId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -399,24 +454,27 @@ namespace Eduhome.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Speakers",
+                name: "TeacherSkill",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Position = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    EventDetailsId = table.Column<int>(nullable: false)
+                    TeachersId = table.Column<int>(nullable: false),
+                    SkillsId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Speakers", x => x.id);
+                    table.PrimaryKey("PK_TeacherSkill", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Speakers_EventDetails_EventDetailsId",
-                        column: x => x.EventDetailsId,
-                        principalTable: "EventDetails",
+                        name: "FK_TeacherSkill_Skills_SkillsId",
+                        column: x => x.SkillsId,
+                        principalTable: "Skills",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TeacherSkill_Teachers_TeachersId",
+                        column: x => x.TeachersId,
+                        principalTable: "Teachers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -430,7 +488,8 @@ namespace Eduhome.Migrations
                     Mail = table.Column<string>(nullable: true),
                     Number = table.Column<string>(nullable: true),
                     Skype = table.Column<string>(nullable: true),
-                    TeacherDetailsId = table.Column<int>(nullable: false)
+                    TeacherDetailsId = table.Column<int>(nullable: false),
+                    Teachersid = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -441,27 +500,12 @@ namespace Eduhome.Migrations
                         principalTable: "TeacherDetails",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Skills",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Percentage = table.Column<double>(nullable: false),
-                    TeacherDetailsId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Skills", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Skills_TeacherDetails_TeacherDetailsId",
-                        column: x => x.TeacherDetailsId,
-                        principalTable: "TeacherDetails",
+                        name: "FK_ContactInfos_Teachers_Teachersid",
+                        column: x => x.Teachersid,
+                        principalTable: "Teachers",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -476,6 +520,11 @@ namespace Eduhome.Migrations
                 column: "TeacherDetailsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContactInfos_Teachersid",
+                table: "ContactInfos",
+                column: "Teachersid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CourseFeatures_CourseId",
                 table: "CourseFeatures",
                 column: "CourseId",
@@ -488,14 +537,14 @@ namespace Eduhome.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skills_TeacherDetailsId",
-                table: "Skills",
-                column: "TeacherDetailsId");
+                name: "IX_EventSpeaker_Eventsid",
+                table: "EventSpeaker",
+                column: "Eventsid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Speakers_EventDetailsId",
-                table: "Speakers",
-                column: "EventDetailsId");
+                name: "IX_EventSpeaker_Speakersid",
+                table: "EventSpeaker",
+                column: "Speakersid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_teacherBios_TeachersId",
@@ -507,6 +556,16 @@ namespace Eduhome.Migrations
                 table: "TeacherDetails",
                 column: "TeacherId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeacherSkill_SkillsId",
+                table: "TeacherSkill",
+                column: "SkillsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeacherSkill_TeachersId",
+                table: "TeacherSkill",
+                column: "TeachersId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -539,6 +598,12 @@ namespace Eduhome.Migrations
                 name: "CourseFeatures");
 
             migrationBuilder.DropTable(
+                name: "EventDetails");
+
+            migrationBuilder.DropTable(
+                name: "EventSpeaker");
+
+            migrationBuilder.DropTable(
                 name: "LatestPosts");
 
             migrationBuilder.DropTable(
@@ -548,16 +613,13 @@ namespace Eduhome.Migrations
                 name: "SingleNoticeRights");
 
             migrationBuilder.DropTable(
-                name: "Skills");
-
-            migrationBuilder.DropTable(
-                name: "Speakers");
-
-            migrationBuilder.DropTable(
                 name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "teacherBios");
+
+            migrationBuilder.DropTable(
+                name: "TeacherSkill");
 
             migrationBuilder.DropTable(
                 name: "Testimonials");
@@ -566,19 +628,22 @@ namespace Eduhome.Migrations
                 name: "Blogs");
 
             migrationBuilder.DropTable(
-                name: "Courses");
-
-            migrationBuilder.DropTable(
                 name: "TeacherDetails");
 
             migrationBuilder.DropTable(
-                name: "EventDetails");
-
-            migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "Speakers");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
 
             migrationBuilder.DropColumn(
                 name: "Title1",

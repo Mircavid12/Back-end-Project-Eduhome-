@@ -1,0 +1,14 @@
+﻿@model List<Categories>
+@{
+    Layout = null;
+}
+
+<div class="single-blog-widget mb-50">
+    <h3>categories</h3>
+    <ul>
+        @foreach (Categories c in Model)
+        {
+            <li><a href="#">@c.Name (@c.Count)</a></li>
+        }
+    </ul>
+</div>

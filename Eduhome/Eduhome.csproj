@@ -65,6 +65,10 @@
     <Compile Remove="Migrations\20201228194243_CreateAllTables.Designer.cs" />
     <Compile Remove="Migrations\20201228201420_CreateAllTablesOnDB.cs" />
     <Compile Remove="Migrations\20201228201420_CreateAllTablesOnDB.Designer.cs" />
+    <Compile Remove="Migrations\20201228202625_CreateAllTablesDB.cs" />
+    <Compile Remove="Migrations\20201228202625_CreateAllTablesDB.Designer.cs" />
+    <Compile Remove="Migrations\20201229204419_CorrectedRelations.cs" />
+    <Compile Remove="Migrations\20201229204419_CorrectedRelations.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

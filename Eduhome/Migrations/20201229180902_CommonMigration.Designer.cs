@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eduhome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201228202625_CreateAllTablesDB")]
-    partial class CreateAllTablesDB
+    [Migration("20201229180902_CommonMigration")]
+    partial class CommonMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,9 +234,14 @@ namespace Eduhome.Migrations
                     b.Property<int>("TeacherDetailsId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Teachersid")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.HasIndex("TeacherDetailsId");
+
+                    b.HasIndex("Teachersid");
 
                     b.ToTable("ContactInfos");
                 });
@@ -383,6 +388,34 @@ namespace Eduhome.Migrations
                     b.ToTable("EventDetails");
                 });
 
+            modelBuilder.Entity("Eduhome.Models.EventSpeaker", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Eventsid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpeakerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Speakersid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Eventsid");
+
+                    b.HasIndex("Speakersid");
+
+                    b.ToTable("EventSpeaker");
+                });
+
             modelBuilder.Entity("Eduhome.Models.Events", b =>
                 {
                     b.Property<int>("id")
@@ -504,12 +537,7 @@ namespace Eduhome.Migrations
                     b.Property<double>("Percentage")
                         .HasColumnType("float");
 
-                    b.Property<int>("TeacherDetailsId")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
-
-                    b.HasIndex("TeacherDetailsId");
 
                     b.ToTable("Skills");
                 });
@@ -552,9 +580,6 @@ namespace Eduhome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EventDetailsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -568,8 +593,6 @@ namespace Eduhome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
-
-                    b.HasIndex("EventDetailsId");
 
                     b.ToTable("Speakers");
                 });
@@ -599,20 +622,11 @@ namespace Eduhome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Facebook")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Instagram")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pinterest")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TeachersId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Vimeo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -671,6 +685,28 @@ namespace Eduhome.Migrations
                         .IsUnique();
 
                     b.ToTable("TeacherDetails");
+                });
+
+            modelBuilder.Entity("Eduhome.Models.TeacherSkill", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SkillsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeachersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("SkillsId");
+
+                    b.HasIndex("TeachersId");
+
+                    b.ToTable("TeacherSkill");
                 });
 
             modelBuilder.Entity("Eduhome.Models.Teachers", b =>
@@ -739,10 +775,14 @@ namespace Eduhome.Migrations
             modelBuilder.Entity("Eduhome.Models.ContactInfos", b =>
                 {
                     b.HasOne("Eduhome.Models.TeacherDetails", "TeacherDetails")
-                        .WithMany("ContactInfos")
+                        .WithMany()
                         .HasForeignKey("TeacherDetailsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Eduhome.Models.Teachers", null)
+                        .WithMany("ContactInfos")
+                        .HasForeignKey("Teachersid");
                 });
 
             modelBuilder.Entity("Eduhome.Models.CourseFeatures", b =>
@@ -763,22 +803,15 @@ namespace Eduhome.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Eduhome.Models.Skills", b =>
+            modelBuilder.Entity("Eduhome.Models.EventSpeaker", b =>
                 {
-                    b.HasOne("Eduhome.Models.TeacherDetails", "TeacherDetails")
-                        .WithMany("Skills")
-                        .HasForeignKey("TeacherDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                    b.HasOne("Eduhome.Models.Events", "Events")
+                        .WithMany("EventSpeakers")
+                        .HasForeignKey("Eventsid");
 
-            modelBuilder.Entity("Eduhome.Models.Speakers", b =>
-                {
-                    b.HasOne("Eduhome.Models.EventDetails", "EventDetails")
-                        .WithMany("Speakers")
-                        .HasForeignKey("EventDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Eduhome.Models.Speakers", "Speakers")
+                        .WithMany("EventSpeakers")
+                        .HasForeignKey("Speakersid");
                 });
 
             modelBuilder.Entity("Eduhome.Models.TeacherBios", b =>
@@ -795,6 +828,21 @@ namespace Eduhome.Migrations
                     b.HasOne("Eduhome.Models.Teachers", "Teachers")
                         .WithOne("TeacherDetails")
                         .HasForeignKey("Eduhome.Models.TeacherDetails", "TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Eduhome.Models.TeacherSkill", b =>
+                {
+                    b.HasOne("Eduhome.Models.Skills", "Skills")
+                        .WithMany("TeacherSkills")
+                        .HasForeignKey("SkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Eduhome.Models.Teachers", "Teachers")
+                        .WithMany("TeacherSkills")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
