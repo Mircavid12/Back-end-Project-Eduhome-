@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Eduhome.DAL;
+using Eduhome.Models;
 using Eduhome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eduhome.Controllers
 {
@@ -15,25 +17,32 @@ namespace Eduhome.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            BlogVM blogVM = new BlogVM
+            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Blogs.Where(t => t.IsDeleted == false).Count() / 3);
+            ViewBag.page = page;
+            if (page == null)
             {
-                Blogs=_context.Blogs.Where(b=>b.IsDeleted==false).ToList(),
-                BlogDetails=_context.BlogDetails.ToList()
-            };
-            return View(blogVM);
+                List<Blogs> blogs = _context.Blogs.Where(t => t.IsDeleted == false).Take(3).ToList();
+                return View(blogs);
+            }
+            List<Blogs> blogs1 = _context.Blogs.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
+            return View(blogs1);
         }
-        public IActionResult BlogDetail()
+        public IActionResult BlogDetail(int? id)
         {
-            BlogVM blogVM = new BlogVM
+            if (id == null)
             {
-                BlogDetails = _context.BlogDetails.ToList(),
-                Categories = _context.Categories.Where(c => c.IsDeleted == false).ToList(),
-                LatestPosts = _context.LatestPosts.Where(l => l.IsDeleted == false).ToList(),
-                Tags = _context.Tags.Where(t => t.IsDeleted == false).ToList()
-            };
-            return View(blogVM);
+                return View(_context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogDetails).FirstOrDefault());
+            }
+
+
+            Blogs blogs = _context.Blogs.Where(b => b.IsDeleted == false).Include(et => et.Tags).Include(ep => ep.latestPosts).Include(bd => bd.BlogDetails).FirstOrDefault(b => b.id == id);
+            if (blogs == null)
+            {
+                return NotFound();
+            }
+            return View(blogs);
         }
     }
 }

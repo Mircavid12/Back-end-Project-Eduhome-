@@ -1,4 +1,4 @@
-﻿@model TeacherVM
+﻿@model Teachers
 @{
     ViewData["Title"] = "TeacherDetail";
 }
@@ -26,20 +26,20 @@
         <div class="row">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <div class="teacher-details-img">
-                    <img src="~/assets/img/teacher/@Model.TeacherDetails.ElementAt(0).Image" alt="teacher">
+                    <img src="~/assets/img/teacher/@Model.Image" alt="teacher">
                 </div>
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
                 <div class="teacher-details-content ml-50">
-                    <h2>@Model.TeacherDetails.ElementAt(0).Name</h2>
-                    <h5>@Model.TeacherDetails.ElementAt(0).Position</h5>
+                    <h2>@Model.Name</h2>
+                    <h5>@Model.Position</h5>
                     <h4>about me</h4>
-                    <p>@Model.TeacherDetails.ElementAt(0).Description </p>
+                    <p>@Model.TeacherDetails.Description </p>
                     <ul>
-                        <li><span>degree: </span>@Model.TeacherDetails.ElementAt(0).Degree</li>
-                        <li><span>experience: </span>@Model.TeacherDetails.ElementAt(0).Experience</li>
-                        <li><span>hobbies: </span>@Model.TeacherDetails.ElementAt(0).Hobbies</li>
-                        <li><span>faculty: </span>@Model.TeacherDetails.ElementAt(0).Faculty</li>
+                        <li><span>degree: </span>@Model.TeacherDetails.Degree</li>
+                        <li><span>experience: </span>@Model.TeacherDetails.Experience</li>
+                        <li><span>hobbies: </span>@Model.TeacherDetails.Hobbies</li>
+                        <li><span>faculty: </span>@Model.TeacherDetails.Faculty</li>
                     </ul>
                 </div>
             </div>
@@ -48,9 +48,9 @@
             <div class="col-md-3 col-sm-4">
                 <div class="teacher-contact">
                     <h4>contact information</h4>
-                    <p><span>mail me : </span>@Model.ContactInfos.ElementAt(0).Mail</p>
+                    @*<p><span>mail me : </span>@Model.ContactInfos.ElementAt(0).Mail</p>
                     <p><span>make a call : </span>@Model.ContactInfos.ElementAt(0).Number</p>
-                    <p><span>skype : </span> @Model.ContactInfos.ElementAt(0).Skype</p>
+                    <p><span>skype : </span> @Model.ContactInfos.ElementAt(0).Skype</p>*@
                     <ul>
                         @foreach (TeacherBios tb in Model.TeacherBios.Take(1))
                         {
@@ -69,7 +69,7 @@
                 </div>
                 <div class="skill-wrapper">
                     <div class="row">
-                        @foreach (Skills s in Model.Skills.Take(6))
+                        @*@foreach (TeacherDetails s in Model.TeacherDetails.)
                         {
                             <div class="col-sm-4">
                                 <div class="skill-bar-item">
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                             </div>
-                        }
+                        }*@
                     </div>
                 </div>
             </div>

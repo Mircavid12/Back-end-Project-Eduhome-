@@ -26,5 +26,6 @@ namespace Eduhome.Models
         [ForeignKey("Teachers")]
         public int TeacherId { get; set; }
         public virtual Teachers Teachers { get; set; }
+        public ICollection<ContactInfos> ContactInfos { get; set; }
     }
 }

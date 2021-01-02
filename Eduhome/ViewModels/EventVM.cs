@@ -14,5 +14,6 @@ namespace Eduhome.ViewModels
         public List<LatestPosts> LatestPosts { get; set; }
         public List<Tags> Tags { get; set; }
         public List<Speakers> Speakers { get; set; }
+        public List<EventSpeaker> EventSpeakers { get; set; }
     }
 }

@@ -32,14 +32,14 @@ namespace Eduhome.Controllers
             {
                 return View(_context.Courses.Where(c=>c.IsDeleted==false).Include(c=>c.CourseFeatures).FirstOrDefault());
             }
-            //CourseVM courseVM = new CourseVM
+            //coursevm coursevm = new coursevm
             //{
-            //    CourseFeatures=_context.CourseFeatures.ToList(),
-            //    Categories=_context.Categories.Where(c=>c.IsDeleted==false).ToList(),
-            //    LatestPosts=_context.LatestPosts.Where(l=>l.IsDeleted==false).ToList(),
-            //    Tags=_context.Tags.Where(t=>t.IsDeleted==false).ToList()
+            //    coursefeatures=_context.coursefeatures.tolist(),
+            //    categories=_context.categories.where(c=>c.isdeleted==false).tolist(),
+            //    latestposts=_context.latestposts.where(l=>l.isdeleted==false).tolist(),
+            //    tags=_context.tags.where(t=>t.isdeleted==false).tolist()
             //};
-            Courses courses = _context.Courses.Where(cs => cs.IsDeleted == false).Include(cf => cf.CourseFeatures).FirstOrDefault(c => c.id == id);
+            Courses courses = _context.Courses.Where(cs => cs.IsDeleted == false).Include(ct=>ct.Tags).Include(cp => cp.LatestPosts).Include(cf => cf.CourseFeatures).FirstOrDefault(c => c.id == id);
             if (courses==null)
             {
                 return NotFound();

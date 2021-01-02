@@ -1,0 +1,42 @@
+﻿@model Courses
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-lg-12">
+                <img src="~/assets/img/course/@Model.Image" width="400" />
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Course Title: @Model.Title</h4>
+                    <h4 class="card-title">Course Description: @Model.Description</h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">About Course: @Model.CourseFeatures.About</h4>
+                    <h4 class="card-title">How to Apply: @Model.CourseFeatures.Apply</h4>
+                    <h4 class="card-title">Certification: @Model.CourseFeatures.Certification</h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Course Start: @Model.CourseFeatures.Start</h4>
+                    <h4 class="card-title"> Duration: @Model.CourseFeatures.Duration</h4>
+                    <h4 class="card-title"> ClassDuration: @Model.CourseFeatures.ClassDuration</h4>
+                    <h4 class="card-title"> Level: @Model.CourseFeatures.Level</h4>
+                    <h4 class="card-title"> Language: @Model.CourseFeatures.Language</h4>
+                    <h4 class="card-title">Student Count: @Model.CourseFeatures.StudentsCount</h4>
+                    <h4 class="card-title"> Assestment: @Model.CourseFeatures.Assestments</h4>
+                    <h4 class="card-title"> Course Fee: @Model.CourseFeatures.CourseFee</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>
+

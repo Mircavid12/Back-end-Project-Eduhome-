@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Eduhome.DAL;
+using Eduhome.Models;
 using Eduhome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eduhome.Controllers
 {
@@ -23,18 +25,20 @@ namespace Eduhome.Controllers
             };
             return View(eventVM);
         }
-        public IActionResult EventDetail()
+        public IActionResult EventDetail(int? id)
         {
-            EventVM eventVM = new EventVM
+            if (id == null)
             {
-                Events = _context.Events.Where(e => e.IsDeleted == false).ToList(),
-                EventDetails = _context.EventDetails.Where(ed => ed.IsDeleted == false).ToList(),
-                Categories = _context.Categories.Where(c => c.IsDeleted == false).ToList(),
-                LatestPosts = _context.LatestPosts.Where(l => l.IsDeleted == false).ToList(),
-                Tags = _context.Tags.Where(t => t.IsDeleted == false).ToList(),
-                Speakers = _context.Speakers.Where(s => s.IsDeleted == false).ToList()
-            };
-            return View(eventVM);
+                return View(_context.Events.Where(e => e.IsDeleted == false).Include(ed => ed.EventDetails).FirstOrDefault());
+            }
+            
+
+            Events events = _context.Events.Where(e => e.IsDeleted == false).Include(et => et.Tags).Include(ep => ep.LatestPosts).Include(ed => ed.EventDetails).Include(es=>es.EventSpeakers).FirstOrDefault(e => e.id == id);
+            if (events == null)
+            {
+                return NotFound();
+            }
+            return View(events);
         }
     }
 }

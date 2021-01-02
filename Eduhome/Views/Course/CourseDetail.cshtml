@@ -109,33 +109,31 @@
                     </div>
                     <div class="single-blog-widget mb-50">
                         <h3>latest post</h3>
-                        @*@foreach (LatestPosts lp in Model)
-            {
-                <div class="single-post mb-30">
-                    <div class="single-post-img">
-                        <a href="blog-details.html">
-                            <img src="~/assets/img/post/@lp.Image" alt="post">
-                            <div class="blog-hover">
-                                <i class="fa fa-link"></i>
+                        @foreach (LatestPosts lp in Model.LatestPosts)
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="blog-details.html">
+                                        <img src="~/assets/img/post/@lp.Image" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="blog-details.html">@lp.Title</a></h4>
+                                    <p>@lp.Description</p>
+                                </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="single-post-content">
-                        <h4><a href="blog-details.html">@lp.Title</a></h4>
-                        <p>@lp.Description</p>
-                    </div>
-                </div>
-            }*@
+                        }
                     </div>
                     <div class="single-blog-widget">
                         <h3>tags</h3>
                         <div class="single-tag">
-                            <a href="blog-details.html" class="mr-10 mb-10">course</a>
-                            <a href="blog-details.html" class="mr-10 mb-10">education</a>
-                            <a href="blog-details.html" class="mb-10">teachers</a>
-                            <a href="blog-details.html" class="mr-10">learning</a>
-                            <a href="blog-details.html" class="mr-10">university</a>
-                            <a href="blog-details.html">events</a>
+                            @foreach (Tags t in Model.Tags)
+                            {
+                                <a href="blog-details.html" class="mr-10 mb-10">@t.Title</a>
+                            }
                         </div>
                     </div>
                 </div>

@@ -311,4 +311,13 @@ C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhom
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Course\CourseDetail.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Category\Default.cshtml.g.cs
-C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\LatestPost\Default.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\_ViewStart.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\_ViewImports.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Course\Index.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Blog\Index.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Course\Create.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Shared\_Validation.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Course\Delete.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Course\Detail.cshtml.g.cs
