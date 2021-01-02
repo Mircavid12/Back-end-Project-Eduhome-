@@ -96,5 +96,51 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        public IActionResult Update(int? id)
+        {
+            if (id == null) return NotFound();
+            Courses courses = _context.Courses.Include(c => c.Tags).Include(c => c.LatestPosts).Include(c=>c.CourseFeatures).FirstOrDefault(c => c.id == id && c.IsDeleted == false);
+            if (courses == null) return NotFound();
+            return View(courses);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(Courses courses, int? id)
+        {
+            Courses viewCourse = _context.Courses.Include(p => p.Tags).Include(c => c.LatestPosts)
+                   .FirstOrDefault(c => c.id == id && c.IsDeleted == false);
+            
+            bool IsExist = _context.Courses.Where(c => c.IsDeleted == false).Any(c => c.Title.ToLower() == courses.Title.ToLower());
+
+            if (IsExist && courses.Photo == null)
+            {
+                ModelState.AddModelError("", "Please add image");
+                return View(viewCourse);
+            }
+
+            if (courses.Photo != null)
+            {
+                if (!courses.Photo.IsImage())
+                {
+                    ModelState.AddModelError("", "Please select image type");
+                    return View(viewCourse);
+                }
+                if (!courses.Photo.MaxSize(250))
+                {
+                    ModelState.AddModelError("", "Image size must be less than 250kb");
+                    return View(viewCourse);
+                }
+
+                string folder = Path.Combine("assets", "img", "course");
+                string fileName = await courses.Photo.SaveImageAsync(_env.WebRootPath, folder);
+                viewCourse.Image = fileName;
+            }
+            viewCourse.Title = courses.Title;
+            courses.IsDeleted = false;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

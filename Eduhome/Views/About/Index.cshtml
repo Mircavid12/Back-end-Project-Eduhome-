@@ -29,7 +29,7 @@
                     <h2>@Html.Raw(Model.AboutIntro.Title)</h2>
                     <p>@Model.AboutIntro.Description1</p>
                     <p class="hidden-sm">@Model.AboutIntro.Description2</p>
-                    <a class="default-btn" href="#">view courses</a>
+                    <a class="default-btn" asp-controller="Course" asp-action="Index">view courses</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -58,10 +58,10 @@
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="single-teacher">
                         <div class="single-teacher-img">
-                            <a href="teacher-details.html"><img src="~/assets/img/teacher/@teacher.Image" alt="teacher"></a>
+                            <a asp-controller="Teacher" asp-action="TeacherDetail" asp-route-id="@teacher.id"><img src="~/assets/img/teacher/@teacher.Image" alt="teacher"></a>
                         </div>
                         <div class="single-teacher-content text-center">
-                            <h2><a href="teacher-details.html">@teacher.Name</a></h2>
+                            <h2><a asp-controller="Teacher" asp-action="TeacherDetail" asp-route-id="@teacher.id">@teacher.Name</a></h2>
                             <h4>@teacher.Position</h4>
                             <ul>
                                 @foreach (TeacherBios tb in teacher.TeacherBios.Take(1))

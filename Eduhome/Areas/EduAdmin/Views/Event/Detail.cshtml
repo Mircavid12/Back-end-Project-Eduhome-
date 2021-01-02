@@ -1,0 +1,38 @@
+﻿@model Events
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-lg-12">
+                <img src="~/assets/img/events/@Model.Image" width="400" />
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Event Title: @Model.Title</h4>
+                    <h4 class="card-title">Event StartTime: @Model.StartTime</h4>
+                    <h4 class="card-title">Event EndTime: @Model.EndTime</h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Date:  @Model.Day - @Model.Month</h4>
+                    <h4 class="card-title">Venue:  @Model.Venue</h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Description1: @Model.EventDetails.Description1</h4>
+                    <h4 class="card-title"> Description2: @Model.EventDetails.Description2</h4>
+                    <h4 class="card-title"> Description3: @Model.EventDetails.Description3</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>
+
+

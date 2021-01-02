@@ -10,12 +10,6 @@ namespace Eduhome.Models
     public class BlogDetails
     {
         public int id { get; set; }
-        [Required,StringLength(100)]
-        public string Image { get; set; }
-        [Required]
-        public string Info { get; set; }
-        [Required]
-        public string Title { get; set; }
         public string Description1 { get; set; }
         public string Description2 { get; set; }
         public string Description3 { get; set; }

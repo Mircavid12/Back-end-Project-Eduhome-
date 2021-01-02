@@ -1,0 +1,28 @@
+﻿@model Blogs
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-lg-12">
+                <img src="~/assets/img/blog/@Model.Image" width="400" />
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Course Description:  @Model.Description</h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Description1:  @Model.BlogDetails.Description1</h4>
+                    <h4 class="card-title">Description2:  @Model.BlogDetails.Description2</h4>
+                    <h4 class="card-title">Description3:  @Model.BlogDetails.Description3</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>

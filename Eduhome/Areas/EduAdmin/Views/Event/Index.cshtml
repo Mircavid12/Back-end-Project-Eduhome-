@@ -1,0 +1,51 @@
+﻿@model List<Events>
+@{
+    ViewData["Title"] = "Course";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Events</h4>
+            <a asp-controller="Event" asp-action="Create" class="btn btn-success">
+                Create
+            </a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Event Title
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Events e in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @e.Title
+                                </td>
+                                <td>
+                                    <a asp-controller="Event" asp-action="Detail" asp-route-id="@e.id" class="btn btn-secondary">
+                                        <i class="mdi mdi-information"></i>
+                                    </a>
+                                    <a asp-controller="Event" asp-action="Update" asp-route-id="@e.id" class="btn btn-warning">
+                                        <i class="mdi mdi-table-edit"></i>
+                                    </a>
+                                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@e.id" class="btn btn-danger">
+                                        <i class="mdi mdi-delete"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

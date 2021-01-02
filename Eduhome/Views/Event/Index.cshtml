@@ -1,4 +1,4 @@
-﻿@model EventVM
+﻿@model List<Events>
 @{
     ViewData["Title"] = "Index";
 }
@@ -24,7 +24,7 @@
 <div class="event-area three text-center pt-150 pb-150">
     <div class="container">
         <div class="row">
-            @foreach (Events e in Model.Events)
+            @foreach (Events e in Model)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-event mb-60">
@@ -52,6 +52,30 @@
                     </div>
                 </div>
             }
+        </div>
+        <div class="row text-center">
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        if (i == ViewBag.page)
+                        {
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">@i</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-controller="Event"
+                                   asp-action="Index"
+                                   asp-route-page="@i">@i</a>
+                            </li>
+                        }
+
+                    }
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

@@ -1,0 +1,56 @@
+﻿@model List<Teachers>
+@{
+    ViewData["Title"] = "Teacher";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Teachers</h4>
+            <a asp-controller="Teacher" asp-action="Create" class="btn btn-success">
+                Create
+            </a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Teacher Name
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Teachers t in Model)
+                        {
+                        <tr>
+                            <td>
+                                @t.Name
+                            </td>
+                            <td>
+                                @t.Position
+                            </td>
+                            <td>
+                                <a asp-controller="Teacher" asp-action="Detail" asp-route-id="@t.id" class="btn btn-secondary">
+                                    <i class="mdi mdi-information"></i>
+                                </a>
+                                <a asp-controller="Teacher" asp-action="Update" asp-route-id="@t.id" class="btn btn-warning">
+                                    <i class="mdi mdi-table-edit"></i>
+                                </a>
+                                <a asp-controller="Teacher" asp-action="Delete" asp-route-id="@t.id" class="btn btn-danger">
+                                    <i class="mdi mdi-delete"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,12 +10,6 @@ namespace Eduhome.Models
     public class TeacherDetails
     {
         public int id { get; set; }
-        [Required, StringLength(100)]
-        public string Image { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Position { get; set; }
         public string Description { get; set; }
         public string Degree { get; set; }
         public string  Experience { get; set; }

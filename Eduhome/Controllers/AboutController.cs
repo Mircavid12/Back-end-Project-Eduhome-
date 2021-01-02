@@ -24,7 +24,8 @@ namespace Eduhome.Controllers
                 Teachers=_context.Teachers.Where(t=>t.IsDeleted==false).Include(t=>t.TeacherBios).ToList(),
                 Testimonials=_context.Testimonials.FirstOrDefault(),
                 AboutVideo=_context.AboutVideos.FirstOrDefault(),
-                NoticeBoards=_context.NoticeBoards.Where(nb=>nb.IsDeleted==false).ToList()
+                NoticeBoards=_context.NoticeBoards.Where(nb=>nb.IsDeleted==false).ToList(),
+                
             };
             return View(aboutVM);
         }

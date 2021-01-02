@@ -17,14 +17,17 @@ namespace Eduhome.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            CourseVM courseVM = new CourseVM 
-            { 
-                Courses=_context.Courses.Where(c=>c.IsDeleted==false).ToList(),
-            };
-
-            return View(courseVM);
+            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(c => c.IsDeleted == false).Count() / 3);
+            ViewBag.page = page;
+            if (page == null)
+            {
+                List<Courses> courseDetails = _context.Courses.Where(c => c.IsDeleted == false).Take(3).ToList();
+                return View(courseDetails);
+            }
+            List<Courses> courseDetails1 = _context.Courses.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
+            return View(courseDetails1);
         }
         public IActionResult CourseDetail(int id)
         {
