@@ -29,6 +29,7 @@ namespace Eduhome.Controllers
             List<Teachers> teacherDetails1 = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb=>tb.TeacherBios).Skip((int)(page-1)*4).Take(4).ToList();
             return View(teacherDetails1);
         }
+        //Teacher Detail
         public IActionResult TeacherDetail(int? id)
         {
             if (id == null)
