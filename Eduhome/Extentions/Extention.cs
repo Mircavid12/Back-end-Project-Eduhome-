@@ -31,4 +31,9 @@ namespace Eduhome.Extentions
             return fileName;
         }
     }
+    public enum Roles
+    {
+        Admin,
+        Member
+    }
 }
