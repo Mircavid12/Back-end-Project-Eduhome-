@@ -110,14 +110,6 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             Courses viewCourse = _context.Courses.Include(p => p.Tags).Include(c => c.LatestPosts)
                    .FirstOrDefault(c => c.id == id && c.IsDeleted == false);
             
-            bool IsExist = _context.Courses.Where(c => c.IsDeleted == false).Any(c => c.Title.ToLower() == courses.Title.ToLower());
-
-            if (IsExist && courses.Photo == null)
-            {
-                ModelState.AddModelError("", "Please add image");
-                return View(viewCourse);
-            }
-
             if (courses.Photo != null)
             {
                 if (!courses.Photo.IsImage())

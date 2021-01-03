@@ -110,14 +110,6 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             Blogs viewBlog = _context.Blogs.Include(b => b.Tags).Include(b => b.latestPosts)
                    .FirstOrDefault(b => b.id == id && b.IsDeleted == false);
 
-            bool IsExist = _context.Blogs.Where(b => b.IsDeleted == false).Any(b => b.Description.ToLower() == blogs.Description.ToLower());
-
-            if (IsExist && blogs.Photo == null)
-            {
-                ModelState.AddModelError("", "Please add image");
-                return View(viewBlog);
-            }
-
             if (blogs.Photo != null)
             {
                 if (!blogs.Photo.IsImage())

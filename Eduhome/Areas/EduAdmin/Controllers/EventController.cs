@@ -110,13 +110,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             Events viewEvent = _context.Events.Include(et => et.Tags).Include(e => e.LatestPosts).Include(ed=>ed.EventDetails)
                    .FirstOrDefault(e => e.id == id && e.IsDeleted == false);
 
-            bool IsExist = _context.Events.Where(e => e.IsDeleted == false).Any(e => e.Title.ToLower() == events.Title.ToLower());
-
-            if (IsExist && events.Photo == null)
-            {
-                ModelState.AddModelError("", "Please add image");
-                return View(viewEvent);
-            }
+            
 
             if (events.Photo != null)
             {

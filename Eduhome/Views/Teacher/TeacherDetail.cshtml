@@ -48,9 +48,9 @@
             <div class="col-md-3 col-sm-4">
                 <div class="teacher-contact">
                     <h4>contact information</h4>
-                    @*<p><span>mail me : </span>@Model.ContactInfos.ElementAt(0).Mail</p>
-                    <p><span>make a call : </span>@Model.ContactInfos.ElementAt(0).Number</p>
-                    <p><span>skype : </span> @Model.ContactInfos.ElementAt(0).Skype</p>*@
+                    <p><span>mail me : </span>@Model.TeacherDetails.ContactInfos.ElementAt(0).Mail</p>
+                    <p><span>make a call : </span>@Model.TeacherDetails.ContactInfos.ElementAt(0).Number</p>
+                    <p><span>skype : </span> @Model.TeacherDetails.ContactInfos.ElementAt(0).Skype</p>
                     <ul>
                         @foreach (TeacherBios tb in Model.TeacherBios.Take(1))
                         {
@@ -69,11 +69,11 @@
                 </div>
                 <div class="skill-wrapper">
                     <div class="row">
-                        @*@foreach (TeacherDetails s in Model.TeacherDetails.)
+                        @foreach (TeacherSkill s in Model.TeacherSkills)
                         {
                             <div class="col-sm-4">
                                 <div class="skill-bar-item">
-                                    <span>@s.Name</span>
+                                    <span>@s.Skills.Name</span>
                                     <div class="progress">
                                         <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: 85%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
                                             <span class="text-top">@s.Percentage%</span>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                             </div>
-                        }*@
+                        }
                     </div>
                 </div>
             </div>

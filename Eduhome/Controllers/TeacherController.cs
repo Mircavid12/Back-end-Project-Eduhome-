@@ -19,14 +19,14 @@ namespace Eduhome.Controllers
         }
         public IActionResult Index(int? page)
         {
-            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Teachers.Where(t => t.IsDeleted == false).Count() / 4);
+            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Count() / 4);
             ViewBag.page = page;
             if (page==null)
             {
-                List<Teachers> teacherDetails = _context.Teachers.Where(t => t.IsDeleted == false).Take(4).ToList();
+                List<Teachers> teacherDetails = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Take(4).ToList();
                 return View(teacherDetails);
             }
-            List<Teachers> teacherDetails1 = _context.Teachers.Where(t => t.IsDeleted == false).Skip((int)(page-1)*4).Take(4).ToList();
+            List<Teachers> teacherDetails1 = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb=>tb.TeacherBios).Skip((int)(page-1)*4).Take(4).ToList();
             return View(teacherDetails1);
         }
         public IActionResult TeacherDetail(int? id)
@@ -37,7 +37,7 @@ namespace Eduhome.Controllers
             }
 
 
-            Teachers teachers = _context.Teachers.Where(t => t.IsDeleted == false).Include(td => td.TeacherDetails).Include(t=>t.ContactInfos).Include(tb=>tb.TeacherBios).FirstOrDefault(t => t.id == id);
+            Teachers teachers = _context.Teachers.Where(t => t.IsDeleted == false).Include(td => td.TeacherDetails).ThenInclude(t => t.ContactInfos).Include(tb=>tb.TeacherBios).Include(ts=>ts.TeacherSkills).ThenInclude(s=>s.Skills).FirstOrDefault(t => t.id == id);
             if (teachers == null)
             {
                 return NotFound();

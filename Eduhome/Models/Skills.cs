@@ -11,8 +11,8 @@ namespace Eduhome.Models
         public int id { get; set; }
         [Required, StringLength(100)]
         public string Name { get; set; }
-        [Required]
-        public double Percentage { get; set; }
+        public bool? IsDeleted { get; set; }
+        public DateTime DeletedTime { get; set; }
         public ICollection<TeacherSkill> TeacherSkills { get; set; }
     }
 }

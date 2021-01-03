@@ -12,5 +12,6 @@ namespace Eduhome.Models
         public int  TeachersId { get; set; }
         public virtual Skills Skills { get; set; }
         public int SkillsId { get; set; }
+        public double? Percentage { get; set; }
     }
 }

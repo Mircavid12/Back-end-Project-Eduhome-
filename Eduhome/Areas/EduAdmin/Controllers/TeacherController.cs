@@ -109,15 +109,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             Teachers viewTeacher = _context.Teachers.Include(td => td.TeacherDetails).Include(tb => tb.TeacherBios).Include(ts => ts.TeacherSkills)
                    .FirstOrDefault(t => t.id == id && t.IsDeleted == false);
-
-            bool IsExist = _context.Teachers.Where(t => t.IsDeleted == false).Any(t => t.Name.ToLower() == teachers.Name.ToLower());
-
-            if (IsExist && teachers.Photo == null)
-            {
-                ModelState.AddModelError("", "Please add image");
-                return View(viewTeacher);
-            }
-
+            
             if (teachers.Photo != null)
             {
                 if (!teachers.Photo.IsImage())

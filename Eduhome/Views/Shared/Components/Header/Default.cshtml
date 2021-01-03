@@ -44,31 +44,15 @@
                                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                                     <li>
                                         <a asp-controller="Course" asp-action="Index">courses</a>
-                                        <ul>
-                                            <li><a asp-controller="Course" asp-action="Index">courses</a></li>
-                                            <li><a asp-controller="Course" asp-action="CourseDetail" asp-route-id="2">courses details</a></li>
-                                        </ul>
                                     </li>
                                     <li>
                                         <a asp-controller="Event" asp-action="Index">event</a>
-                                        <ul>
-                                            <li><a asp-controller="Event" asp-action="Index">event</a></li>
-                                            <li><a asp-controller="Event" asp-action="EventDetail">event details</a></li>
-                                        </ul>
                                     </li>
                                     <li class="hidden-sm">
                                         <a asp-controller="Teacher" asp-action="Index">teacher</a>
-                                        <ul>
-                                            <li><a asp-controller="Teacher" asp-action="Index">teacher</a></li>
-                                            <li><a asp-controller="Teacher" asp-action="TeacherDetail">teacher details</a></li>
-                                        </ul>
                                     </li>
                                     <li>
                                         <a asp-controller="Blog" asp-action="Index">blog</a>
-                                        <ul>
-                                            <li><a asp-controller="Blog" asp-action="Index">blog</a></li>
-                                            <li><a asp-controller="Blog" asp-action="BlogDetail">blog details</a></li>
-                                        </ul>
                                     </li>
                                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
                                     @if (User.Identity.IsAuthenticated)
