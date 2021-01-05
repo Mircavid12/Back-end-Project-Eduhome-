@@ -37,7 +37,7 @@ namespace Eduhome.Controllers
             }
             
 
-            Events events = _context.Events.Where(e => e.IsDeleted == false).Include(et => et.Tags).Include(ep => ep.LatestPosts).Include(ed => ed.EventDetails).Include(es=>es.EventSpeakers).FirstOrDefault(e => e.id == id);
+            Events events = _context.Events.Where(e => e.IsDeleted == false).Include(et => et.Tags).Include(ep => ep.LatestPosts).Include(ed => ed.EventDetails).Include(es=>es.EventSpeakers).ThenInclude(s=>s.Speakers).FirstOrDefault(e => e.id == id);
             if (events == null)
             {
                 return NotFound();

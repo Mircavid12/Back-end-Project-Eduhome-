@@ -28,6 +28,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         }
         public IActionResult Create()
         {
+            GetSpeakers();
             return View();
         }
         [HttpPost]
@@ -38,6 +39,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             //{
             //    return NotFound();
             //}
+            GetSpeakers();
             bool IsExist = _context.Events.Where(e => e.IsDeleted == false).Any(ed => ed.Title.ToLower() == events.Title.ToLower());
             if (IsExist)
             {
@@ -134,6 +136,10 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        private void GetSpeakers()
+        {
+            ViewBag.Speakers = _context.Speakers.Where(s => s.IsDeleted == false).ToList();
         }
     }
 }

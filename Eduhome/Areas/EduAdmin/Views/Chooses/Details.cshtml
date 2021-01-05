@@ -1,0 +1,36 @@
+﻿@model Eduhome.Models.Chooses
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chooses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description2)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
