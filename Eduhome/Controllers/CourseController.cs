@@ -17,18 +17,33 @@ namespace Eduhome.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page)
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString, int? page)
         {
-            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(c => c.IsDeleted == false).Count() / 3);
-            ViewBag.page = page;
-            if (page == null)
+            ViewData["GetCourses"] = searchString;
+            var courseQuery = from x in _context.Courses select x;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                List<Courses> courseDetails = _context.Courses.Where(c => c.IsDeleted == false).Take(3).ToList();
-                return View(courseDetails);
+                courseQuery = courseQuery.Where(x => x.Title.Contains(searchString) && x.IsDeleted == false);
+                return View(await courseQuery.AsNoTracking().ToListAsync());
             }
-            List<Courses> courseDetails1 = _context.Courses.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
-            return View(courseDetails1);
+            else
+            {
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Courses.Where(c => c.IsDeleted == false).Count() / 3);
+                ViewBag.page = page;
+                if (page == null)
+                {
+                    List<Courses> courseDetails = _context.Courses.Where(c => c.IsDeleted == false).Take(3).ToList();
+                    return View(courseDetails);
+                }
+                List<Courses> courseDetails1 = _context.Courses.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
+
+                return View(courseDetails1);
+            }
+            
         }
+        
+
         public IActionResult CourseDetail(int id)
         {
             if (id==null)

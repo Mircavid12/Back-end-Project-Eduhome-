@@ -1,0 +1,42 @@
+﻿@model Eduhome.Models.Contacts
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contacts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLogo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AddressLogo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isDeleted)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
