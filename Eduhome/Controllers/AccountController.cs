@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Eduhome.DAL;
 using Eduhome.Extentions;
 using Eduhome.Models;
 using Eduhome.ViewModels;
@@ -15,13 +16,16 @@ namespace Eduhome.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly AppDbContext _context;
         public AccountController(UserManager<AppUser> userManager,
                                 SignInManager<AppUser> signInManager,
-                                RoleManager<IdentityRole> roleManager)
+                                RoleManager<IdentityRole> roleManager,
+                                AppDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
         public IActionResult Login()
         {
@@ -110,5 +114,31 @@ namespace Eduhome.Controllers
         //        await _roleManager.CreateAsync(new IdentityRole { Name = Roles.Member.ToString() });
         //}
         #endregion
+
+        public IActionResult Subscribe()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Subscribe(Subscribe subscribedEmail)
+        {
+            
+                Subscribe subscribed = new Subscribe();
+                subscribed.Email = subscribedEmail.Email.Trim().ToLower();
+                bool isExist = _context.Subscribes
+                      .Any(e => e.Email.Trim().ToLower() == subscribedEmail.Email.Trim().ToLower());
+                if (isExist)
+                {
+                    ModelState.AddModelError("", "This email already subscribed");
+                }
+                else
+                {
+                    await _context.Subscribes.AddAsync(subscribed);
+                    await _context.SaveChangesAsync();
+               }
+            
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

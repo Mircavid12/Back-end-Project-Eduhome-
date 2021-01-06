@@ -37,6 +37,7 @@ namespace Eduhome.DAL
         public DbSet<TeacherBios> teacherBios { get; set; }
         public DbSet<AboutVideo> AboutVideos { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
 
     }
 }

@@ -421,3 +421,4 @@ C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhom
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Skills\Details.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Skills\Edit.cshtml.g.cs
 C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Areas\EduAdmin\Views\Skills\Index.cshtml.g.cs
+C:\Users\Power Electronics\source\repos\Eduhome\Back-end-Project-Eduhome-\Eduhome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Subscribe\Default.cshtml.g.cs

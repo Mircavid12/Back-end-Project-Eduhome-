@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Eduhome.DAL;
 using Eduhome.Extentions;
@@ -67,6 +69,11 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             events.IsDeleted = false;
 
             await _context.Events.AddAsync(events);
+            List<Subscribe> emails = _context.Subscribes.ToList();
+            foreach (Subscribe email in emails)
+            {
+                SendEmail(email.Email, "Yeni bir event yaradildi.", "<h1>Yeni bir event yaradildi</h1>");
+            }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -140,6 +147,32 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         private void GetSpeakers()
         {
             ViewBag.Speakers = _context.Speakers.Where(s => s.IsDeleted == false).ToList();
+        }
+        public void SendEmail(string email, string subject, string htmlMessage)
+        {
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential()
+                {
+                    UserName = "miri.elekberov.code@gmail.com",
+                    Password = "mustafa2001"
+                }
+            };
+            MailAddress fromEmail = new MailAddress("miri.elekberov.code@gmail.com", "Miri");
+            MailAddress toEmail = new MailAddress(email, "Miri");
+            MailMessage message = new MailMessage()
+            {
+                From = fromEmail,
+                Subject = subject,
+                Body = htmlMessage
+            };
+            message.To.Add(toEmail);
+            client.Send(message);
         }
     }
 }
