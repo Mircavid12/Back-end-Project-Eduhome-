@@ -17,17 +17,28 @@ namespace Eduhome.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page)
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString, int? page)
         {
-            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Blogs.Where(t => t.IsDeleted == false).Count() / 3);
-            ViewBag.page = page;
-            if (page == null)
+            ViewData["GetBlogs"] = searchString;
+            var blogQuery = from x in _context.Blogs select x;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                List<Blogs> blogs = _context.Blogs.Where(t => t.IsDeleted == false).Take(3).ToList();
-                return View(blogs);
+                blogQuery = blogQuery.Where(x => x.Description.Contains(searchString) && x.IsDeleted == false);
+                return View(await blogQuery.AsNoTracking().ToListAsync());
             }
-            List<Blogs> blogs1 = _context.Blogs.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
-            return View(blogs1);
+            else
+            {
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Blogs.Where(t => t.IsDeleted == false).Count() / 3);
+                ViewBag.page = page;
+                if (page == null)
+                {
+                    List<Blogs> blogs = _context.Blogs.Where(t => t.IsDeleted == false).Take(3).ToList();
+                    return View(blogs);
+                }
+                List<Blogs> blogs1 = _context.Blogs.Where(t => t.IsDeleted == false).Skip((int)(page - 1) * 3).Take(3).ToList();
+                return View(blogs1);
+            }
         }
         public IActionResult BlogDetail(int? id)
         {

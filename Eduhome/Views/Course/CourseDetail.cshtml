@@ -113,7 +113,7 @@
                         {
                             <div class="single-post mb-30">
                                 <div class="single-post-img">
-                                    <a href="#">
+                                    <a asp-controller="Blog" asp-action="Index">
                                         <img src="~/assets/img/post/@lp.Image" alt="post">
                                         <div class="blog-hover">
                                             <i class="fa fa-link"></i>
@@ -121,7 +121,7 @@
                                     </a>
                                 </div>
                                 <div class="single-post-content">
-                                    <h4><a href="#">@lp.Title</a></h4>
+                                    <h4><a asp-controller="Blog" asp-action="Index">@lp.Title</a></h4>
                                     <p>@lp.Description</p>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                         <div class="single-tag">
                             @foreach (Tags t in Model.Tags)
                             {
-                                <a href="#" class="mr-10 mb-10">@t.Title</a>
+                                <a asp-controller="Course" asp-action="Index" class="mr-10 mb-10">@t.Title</a>
                             }
                         </div>
                     </div>

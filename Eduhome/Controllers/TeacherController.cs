@@ -17,17 +17,28 @@ namespace Eduhome.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page)
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString, int? page)
         {
-            ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Count() / 4);
-            ViewBag.page = page;
-            if (page==null)
+            ViewData["GetTeachers"] = searchString;
+            var teacherQuery = from x in _context.Teachers select x;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                List<Teachers> teacherDetails = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Take(4).ToList();
-                return View(teacherDetails);
+                teacherQuery = teacherQuery.Where(x => x.Name.Contains(searchString) && x.IsDeleted == false).Include(tb=>tb.TeacherBios);
+                return View(await teacherQuery.AsNoTracking().ToListAsync());
             }
-            List<Teachers> teacherDetails1 = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb=>tb.TeacherBios).Skip((int)(page-1)*4).Take(4).ToList();
-            return View(teacherDetails1);
+            else
+            {
+                ViewBag.PageCount = Decimal.Ceiling((decimal)_context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Count() / 4);
+                ViewBag.page = page;
+                if (page == null)
+                {
+                    List<Teachers> teacher = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Take(4).ToList();
+                    return View(teacher);
+                }
+                List<Teachers> teacher1 = _context.Teachers.Where(t => t.IsDeleted == false).Include(tb => tb.TeacherBios).Skip((int)(page - 1) * 4).Take(4).ToList();
+                return View(teacher1);
+            }
         }
         //Teacher Detail
         public IActionResult TeacherDetail(int? id)

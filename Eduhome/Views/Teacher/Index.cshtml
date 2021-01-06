@@ -24,6 +24,21 @@
 <div class="teacher-area pt-150 pb-105">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title ml-auto">
+                    <h3>search teachers</h3>
+                </div>
+                <div class="course-form">
+                    <form method="get" asp-action="Index">
+                        <input type="search" placeholder="Search..." value="@ViewData["GetTeachers"]" name="searchString" />
+                        <button type="submit">search</button>
+                        <a asp-controller="Teacher" asp-action="Index" class="btn btn-primary mt-1">Go back</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
             @foreach (Teachers t in Model)
             {
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -35,13 +50,11 @@
                             <h2><a asp-controller="Teacher" asp-action="TeacherDetail" asp-route-id="@t.id">@t.Name</a></h2>
                             <h4>@t.Position</h4>
                             <ul>
-                                @foreach (TeacherBios tb in t.TeacherBios.Take(1))
-                                {
-                                    <li><a href="@tb"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="@tb"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                    <li><a href="@tb"><i class="zmdi zmdi-vimeo"></i></a></li>
-                                    <li><a href="@tb"><i class="zmdi zmdi-twitter"></i></a></li>
-                                }
+                                    <li><a href="@t.TeacherBios.ElementAt(0).Name"><i class="zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="@t.TeacherBios.ElementAt(1).Name"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                    <li><a href="@t.TeacherBios.ElementAt(2).Name"><i class="zmdi zmdi-vimeo"></i></a></li>
+                                    <li><a href="@t.TeacherBios.ElementAt(3).Name"><i class="zmdi zmdi-twitter"></i></a></li>
+                                
                             </ul>
                         </div>
                     </div>
