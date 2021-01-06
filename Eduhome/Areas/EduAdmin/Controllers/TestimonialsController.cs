@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Testimonials.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Testimonials/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,8 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(testimonials);
         }
+        #endregion
 
-
+        #region Update
         // GET: EduAdmin/Testimonials/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -96,7 +97,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(testimonials);
         }
 
-        
+        #endregion
 
         private bool TestimonialsExists(int id)
         {

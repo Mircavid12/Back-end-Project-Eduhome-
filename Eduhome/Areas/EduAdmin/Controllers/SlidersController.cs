@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Sliders.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Sliders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(sliders);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/Sliders/Create
         public IActionResult Create()
         {
@@ -66,6 +68,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(sliders);
         }
 
+        #endregion
+
+        #region Update
         // GET: EduAdmin/Sliders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -117,6 +122,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(sliders);
         }
 
+        #endregion
+
+        #region Delete
         // GET: EduAdmin/Sliders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -146,6 +154,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        #endregion
         private bool SlidersExists(int id)
         {
             return _context.Sliders.Any(e => e.id == id);

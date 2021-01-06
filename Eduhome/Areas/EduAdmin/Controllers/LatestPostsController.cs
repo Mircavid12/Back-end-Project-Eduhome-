@@ -26,7 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             var appDbContext = _context.LatestPosts.Include(l => l.Blogs).Include(l => l.Courses).Include(l => l.Events);
             return View(await appDbContext.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/LatestPosts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,7 +47,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(latestPosts);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/LatestPosts/Create
         public IActionResult Create()
         {
@@ -76,6 +78,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(latestPosts);
         }
 
+        #endregion
+
+        #region Update
         // GET: EduAdmin/LatestPosts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -133,6 +138,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(latestPosts);
         }
 
+        #endregion
+
+        #region Delete
         // GET: EduAdmin/LatestPosts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -164,6 +172,8 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
 
         private bool LatestPostsExists(int id)
         {

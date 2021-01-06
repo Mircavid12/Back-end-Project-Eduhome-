@@ -26,6 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(_context.Teachers.Where(t => t.IsDeleted == false).OrderByDescending(t => t.id).ToList());
         }
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -68,6 +69,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+        #region Detail
         public IActionResult Detail(int? id)
         {
             if (id == null) return NotFound();
@@ -75,6 +79,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             if (teachers == null) return NotFound();
             return View(teachers);
         }
+        #endregion
+
+        #region Delete
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -96,6 +103,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        #endregion
+
+        #region Update
         public IActionResult Update(int? id)
         {
             if (id == null) return NotFound();
@@ -109,7 +119,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             Teachers viewTeacher = _context.Teachers.Include(td => td.TeacherDetails).Include(tb => tb.TeacherBios).Include(ts => ts.TeacherSkills)
                    .FirstOrDefault(t => t.id == id && t.IsDeleted == false);
-            
+
             if (teachers.Photo != null)
             {
                 if (!teachers.Photo.IsImage())
@@ -133,5 +143,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
     }
 }

@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Speakers.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Speakers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(speakers);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/Speakers/Create
         public IActionResult Create()
         {
@@ -66,6 +68,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(speakers);
         }
 
+        #endregion
+
+        #region Update
         // GET: EduAdmin/Speakers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -117,6 +122,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(speakers);
         }
 
+        #endregion
+
+        #region Delete
         // GET: EduAdmin/Speakers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +153,8 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        #endregion
 
         private bool SpeakersExists(int id)
         {

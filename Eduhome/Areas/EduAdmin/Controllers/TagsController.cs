@@ -26,7 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             var appDbContext = _context.Tags.Include(t => t.Blogs).Include(t => t.Courses).Include(t => t.Events);
             return View(await appDbContext.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Tags/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,7 +47,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(tags);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/Tags/Create
         public IActionResult Create()
         {
@@ -76,6 +78,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(tags);
         }
 
+        #endregion
+
+        #region Update
         // GET: EduAdmin/Tags/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -133,6 +138,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(tags);
         }
 
+        #endregion
+
+        #region MyRegion
         // GET: EduAdmin/Tags/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -164,6 +172,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
         private bool TagsExists(int id)
         {

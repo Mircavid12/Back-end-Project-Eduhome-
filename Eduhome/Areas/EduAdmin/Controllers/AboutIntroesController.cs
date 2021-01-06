@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.AboutIntros.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/AboutIntroes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,9 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(aboutIntro);
         }
+        #endregion
 
-        
-
+        #region Update
         // GET: EduAdmin/AboutIntroes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -97,7 +97,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(aboutIntro);
         }
 
-        
+        #endregion
 
         private bool AboutIntroExists(int id)
         {

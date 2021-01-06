@@ -26,6 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(_context.Blogs.Where(b => b.IsDeleted == false).OrderByDescending(b => b.id).ToList());
         }
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -68,6 +69,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+        #region Detail
         public IActionResult Detail(int? id)
         {
             if (id == null) return NotFound();
@@ -75,6 +79,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             if (blogs == null) return NotFound();
             return View(blogs);
         }
+        #endregion
+
+        #region Delete
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -96,6 +103,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        #endregion
+
+        #region Update
         public IActionResult Update(int? id)
         {
             if (id == null) return NotFound();
@@ -133,5 +143,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
     }
 }

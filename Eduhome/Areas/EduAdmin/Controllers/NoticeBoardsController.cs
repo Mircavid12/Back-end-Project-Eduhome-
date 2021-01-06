@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.NoticeBoards.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/NoticeBoards/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(noticeBoards);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/NoticeBoards/Create
         public IActionResult Create()
         {
@@ -66,6 +68,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(noticeBoards);
         }
 
+        #endregion
+
+        #region Update
         // GET: EduAdmin/NoticeBoards/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -117,6 +122,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(noticeBoards);
         }
 
+        #endregion
+
+        #region Delete
         // GET: EduAdmin/NoticeBoards/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +153,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
         private bool NoticeBoardsExists(int id)
         {

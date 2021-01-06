@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Contacts.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Contacts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(contacts);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/Contacts/Create
         public IActionResult Create()
         {
@@ -65,7 +67,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(contacts);
         }
+        #endregion
 
+        #region Update
         // GET: EduAdmin/Contacts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,7 +120,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(contacts);
         }
+        #endregion
 
+        #region Delete
         // GET: EduAdmin/Contacts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +151,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
         private bool ContactsExists(int id)
         {

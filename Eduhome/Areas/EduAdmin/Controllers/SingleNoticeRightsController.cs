@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.SingleNoticeRights.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/SingleNoticeRights/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(singleNoticeRight);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/SingleNoticeRights/Create
         public IActionResult Create()
         {
@@ -66,6 +68,10 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(singleNoticeRight);
         }
 
+        #endregion
+
+
+        #region Update
         // GET: EduAdmin/SingleNoticeRights/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -117,6 +123,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(singleNoticeRight);
         }
 
+        #endregion
+
+        #region Delete
         // GET: EduAdmin/SingleNoticeRights/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +154,8 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        #endregion
 
         private bool SingleNoticeRightExists(int id)
         {

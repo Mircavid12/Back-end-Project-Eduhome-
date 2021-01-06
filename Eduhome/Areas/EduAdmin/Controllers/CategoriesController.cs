@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Categories.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(categories);
         }
+        #endregion
 
+        #region Create
         // GET: EduAdmin/Categories/Create
         public IActionResult Create()
         {
@@ -65,7 +67,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(categories);
         }
+        #endregion
 
+        #region Update
         // GET: EduAdmin/Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,7 +120,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(categories);
         }
+        #endregion
 
+        #region Delete
         // GET: EduAdmin/Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +151,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+
 
         private bool CategoriesExists(int id)
         {

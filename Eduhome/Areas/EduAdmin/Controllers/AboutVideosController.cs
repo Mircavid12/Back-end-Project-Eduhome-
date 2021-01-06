@@ -26,6 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return View(await _context.AboutVideos.ToListAsync());
         }
 
+        #region Detail
         // GET: EduAdmin/AboutVideos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,9 +44,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(aboutVideo);
         }
+        #endregion
 
-        
-
+        #region Update
         // GET: EduAdmin/AboutVideos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -96,8 +97,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(aboutVideo);
         }
-
-
+        #endregion
         private bool AboutVideoExists(int id)
         {
             return _context.AboutVideos.Any(e => e.id == id);

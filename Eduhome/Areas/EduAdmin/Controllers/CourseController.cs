@@ -26,6 +26,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(_context.Courses.Where(c=>c.IsDeleted==false).OrderByDescending(c=>c.id).ToList());
         }
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -38,7 +39,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             //{
             //    return NotFound();
             //}
-            bool IsExist = _context.Courses.Where(c => c.IsDeleted == false).Any(cs=>cs.Title.ToLower()==course.Title.ToLower());
+            bool IsExist = _context.Courses.Where(c => c.IsDeleted == false).Any(cs => cs.Title.ToLower() == course.Title.ToLower());
             if (IsExist)
             {
                 ModelState.AddModelError("Title", "This course is already exist");
@@ -68,13 +69,19 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+        #region Detail
         public IActionResult Detail(int? id)
         {
             if (id == null) return NotFound();
-            Courses courses = _context.Courses.Where(c => c.IsDeleted == false).Include(c=>c.CourseFeatures).Include(ct=>ct.Tags).FirstOrDefault(c => c.id == id);
+            Courses courses = _context.Courses.Where(c => c.IsDeleted == false).Include(c => c.CourseFeatures).Include(ct => ct.Tags).FirstOrDefault(c => c.id == id);
             if (courses == null) return NotFound();
             return View(courses);
         }
+        #endregion
+
+        #region Delete
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -91,15 +98,18 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             Courses courses = _context.Courses.FirstOrDefault(c => c.id == id && c.IsDeleted == false);
             if (courses == null) return NotFound();
             courses.IsDeleted = true;
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
         }
+        #endregion
+
+        #region Update
         public IActionResult Update(int? id)
         {
             if (id == null) return NotFound();
-            Courses courses = _context.Courses.Include(c => c.Tags).Include(c => c.LatestPosts).Include(c=>c.CourseFeatures).FirstOrDefault(c => c.id == id && c.IsDeleted == false);
+            Courses courses = _context.Courses.Include(c => c.Tags).Include(c => c.LatestPosts).Include(c => c.CourseFeatures).FirstOrDefault(c => c.id == id && c.IsDeleted == false);
             if (courses == null) return NotFound();
             return View(courses);
         }
@@ -109,7 +119,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             Courses viewCourse = _context.Courses.Include(p => p.Tags).Include(c => c.LatestPosts)
                    .FirstOrDefault(c => c.id == id && c.IsDeleted == false);
-            
+
             if (courses.Photo != null)
             {
                 if (!courses.Photo.IsImage())
@@ -133,6 +143,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+
 
     }
 }

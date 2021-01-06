@@ -25,7 +25,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(await _context.Chooses.ToListAsync());
         }
-
+        #region Detail
         // GET: EduAdmin/Chooses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,8 +43,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
 
             return View(chooses);
         }
+        #endregion
 
-
+        #region Update
         // GET: EduAdmin/Chooses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -95,8 +96,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             }
             return View(chooses);
         }
+        #endregion
 
-        
+
 
         private bool ChoosesExists(int id)
         {

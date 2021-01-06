@@ -28,6 +28,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         {
             return View(_context.Events.Where(e => e.IsDeleted == false).OrderByDescending(e => e.id).ToList());
         }
+        #region Create
         public IActionResult Create()
         {
             GetSpeakers();
@@ -77,6 +78,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+        #region Detail
         public IActionResult Detail(int? id)
         {
             if (id == null) return NotFound();
@@ -84,6 +88,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             if (events == null) return NotFound();
             return View(events);
         }
+        #endregion
+
+        #region Delete
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -105,6 +112,9 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        #endregion
+
+        #region Update
         public IActionResult Update(int? id)
         {
             if (id == null) return NotFound();
@@ -116,10 +126,10 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Events events, int? id)
         {
-            Events viewEvent = _context.Events.Include(et => et.Tags).Include(e => e.LatestPosts).Include(ed=>ed.EventDetails)
+            Events viewEvent = _context.Events.Include(et => et.Tags).Include(e => e.LatestPosts).Include(ed => ed.EventDetails)
                    .FirstOrDefault(e => e.id == id && e.IsDeleted == false);
 
-            
+
 
             if (events.Photo != null)
             {
@@ -144,10 +154,13 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+        
         private void GetSpeakers()
         {
             ViewBag.Speakers = _context.Speakers.Where(s => s.IsDeleted == false).ToList();
         }
+        #region SubscribeArea
         public void SendEmail(string email, string subject, string htmlMessage)
         {
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient()
@@ -174,5 +187,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             message.To.Add(toEmail);
             client.Send(message);
         }
+        #endregion
+
     }
 }
