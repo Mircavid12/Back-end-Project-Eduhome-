@@ -31,18 +31,14 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         #region Create
         public IActionResult Create()
         {
-            GetSpeakers();
+            
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Events events)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return NotFound();
-            //}
-            GetSpeakers();
+            
             bool IsExist = _context.Events.Where(e => e.IsDeleted == false).Any(ed => ed.Title.ToLower() == events.Title.ToLower());
             if (IsExist)
             {
@@ -73,7 +69,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
             List<Subscribe> emails = _context.Subscribes.ToList();
             foreach (Subscribe email in emails)
             {
-                SendEmail(email.Email, "Yeni bir event yaradildi.", "<h1>Yeni bir event yaradildi</h1>");
+                SendEmail(email.Email, "Yeni bir event yaradildi.", "Yeni bir event yaradildi");
             }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -156,10 +152,7 @@ namespace Eduhome.Areas.EduAdmin.Controllers
         }
         #endregion
         
-        private void GetSpeakers()
-        {
-            ViewBag.Speakers = _context.Speakers.Where(s => s.IsDeleted == false).ToList();
-        }
+        
         #region SubscribeArea
         public void SendEmail(string email, string subject, string htmlMessage)
         {
